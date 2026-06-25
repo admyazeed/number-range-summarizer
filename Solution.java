@@ -21,8 +21,8 @@ public class Solution implements NumberRangeSummarizer {
     }
 
     public String summarizeCollection(Collection<Integer> input) {
-        ArrayList<Integer> nums = new ArrayList<Integer>(input);
-        String finalString = "";
+        List<Integer> nums = new ArrayList<>(input);
+        List<String> parts = new ArrayList<>(); // Contains each part of the output string
 
         if ((input == null) | input.isEmpty()) {
             return "";
@@ -31,27 +31,30 @@ public class Solution implements NumberRangeSummarizer {
         //Initialize
         int start = nums.get(0);
         int end = nums.get(0);
+        int prev = nums.get(0);
 
         for (int i = 1; i < nums.size(); i++) {
-            if (nums.get(i) - nums.get(i - 1) == 1) {
-                end = nums.get(i);
+            int current = nums.get(i);
+            if (current == prev + 1) {
+                end = current;
+                prev = current;
             } else {
-                if (start != end) {
-                    finalString += start + "-" + end + ", ";
-                } else {
-                    finalString += start + ", ";
-                }
-                start = nums.get(i);
-                end = nums.get(i);
+                parts.add(formatPart(start, end));
+                start = current;
+                end = current;
+                prev = current;
             }
         }
 
-        if (start != end) {
-            finalString += start + "-" + end + ", ";
+        parts.add(formatPart(start, end)); // Add final part
+        return String.join(",", parts);
+    }
+
+    private String formatPart(int start, int end) {
+        if (start == end) {
+            return String.valueOf(start);
         } else {
-            finalString += start + ", ";
+            return start + "-" + end;
         }
-        finalString = finalString.substring(0, finalString.length() - 2);
-        return finalString;
     }
 }
