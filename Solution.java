@@ -7,7 +7,7 @@ public class Solution implements NumberRangeSummarizer {
 
     public Collection<Integer> collect(String input) {
         String[] splitInput = input.split(",");
-        Collection<Integer> collected = new ArrayList<>();
+        Collection<Integer> collected = new TreeSet<>();
 
         for (String str : splitInput) {
             try {
