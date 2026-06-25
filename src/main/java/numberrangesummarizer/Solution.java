@@ -22,12 +22,12 @@ public class Solution implements NumberRangeSummarizer {
 
     @Override
     public String summarizeCollection(Collection<Integer> input) {
-        List<Integer> nums = new ArrayList<>(input);
-        List<String> parts = new ArrayList<>(); // Contains each part of the output string
-
         if (input == null || input.isEmpty()) {
             return "";
         }
+
+        List<Integer> nums = new ArrayList<>(input);
+        List<String> parts = new ArrayList<>(); // Contains each part of the output string
 
         //Initialize
         int start = nums.get(0);
