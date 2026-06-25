@@ -5,6 +5,7 @@ import numberrangesummarizer.NumberRangeSummarizer;
 
 public class Solution implements NumberRangeSummarizer {
 
+    @Override
     public Collection<Integer> collect(String input) {
         String[] splitInput = input.split(",");
         Collection<Integer> collected = new TreeSet<>();
@@ -20,6 +21,7 @@ public class Solution implements NumberRangeSummarizer {
         return collected;
     }
 
+    @Override
     public String summarizeCollection(Collection<Integer> input) {
         List<Integer> nums = new ArrayList<>(input);
         List<String> parts = new ArrayList<>(); // Contains each part of the output string
