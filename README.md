@@ -2,7 +2,7 @@
 ## Overview
 This project implements the NumberRangeSummarizer interface.
 
-The summarizer accepts a collection of integers and produces a comma-separated string representation in which consecutive values are represented as ranges.
+The summarizer accepts a comma-separated list of numbers and returns a summarized list in which consecutive values are represented as ranges.
 
 Example
 
@@ -55,3 +55,4 @@ mvn clean test
 2. **Input is sorted**: Numbers are sorted in ascending order during collection.
 3. **No invalid characters**: Non-numerical characters are ignored, printing an error message for degbugging.
 4. **Input is non-empty**: Summarizing a null or empty collection returns an empty string.
+5. **Input numbers are sufficiently small**: Numbers in input do not exceed Integer maximum or minimum values in Java.
