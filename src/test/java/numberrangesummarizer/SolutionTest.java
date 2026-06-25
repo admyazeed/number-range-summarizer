@@ -62,4 +62,47 @@ class SolutionTest {
 
         assertTrue(result.isEmpty());
     }
+
+    // =====================================================
+    // summarizeCollection() tests
+    // =====================================================
+
+    @Test
+    void summarizeCollection_EmptyCollection_ReturnsEmptyString() {
+        assertEquals("", summarizer.summarizeCollection(List.of()));
+    }
+
+    @Test
+    void summarizeCollection_NullCollection_ReturnsEmptyString() {
+        assertEquals("", summarizer.summarizeCollection(null));
+    }
+
+    @Test
+    void summarizeCollection_SingleValue_ReturnsSingleValue() {
+        assertEquals("5", summarizer.summarizeCollection(List.of(5)));
+    }
+
+    @Test
+    void summarizeCollection_SequentialValues_ReturnsSingleRange() {
+        assertEquals(
+            "1-5",
+            summarizer.summarizeCollection(List.of(1, 2, 3, 4, 5))
+        );
+    }
+
+    @Test
+    void summarizeCollection_NonSequentialValues_ReturnsIndividualValues() {
+        assertEquals(
+            "1, 3, 5, 7",
+            summarizer.summarizeCollection(List.of(1, 3, 5, 7))
+        );
+    }
+
+    @Test
+    void summarizeCollection_MixedRangesAndValues_ReturnsCorrectSummary() {
+        assertEquals(
+            "1-3, 5, 7-8, 10",
+            summarizer.summarizeCollection(List.of(1, 2, 3, 5, 7, 8, 10))
+        );
+    }
 }
