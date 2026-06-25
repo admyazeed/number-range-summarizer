@@ -105,4 +105,29 @@ class SolutionTest {
             summarizer.summarizeCollection(List.of(1, 2, 3, 5, 7, 8, 10))
         );
     }
+
+    // =====================================================
+    // Integration test
+    // =====================================================
+
+    @Test
+    void collectAndSummarize_ExampleInput_ReturnsExpectedSummary() {
+        Collection<Integer> nums = summarizer.collect(
+            "1,3,6,7,8,12,13,14,15,21,22,23,24,31"
+        );
+
+        assertEquals(
+            "1, 3, 6-8, 12-15, 21-24, 31",
+            summarizer.summarizeCollection(nums)
+        );
+    }
+
+    @Test
+    void collectAndSummarize_MixedInput_ReturnsCorrectSummary() {
+        Collection<Integer> nums = summarizer.collect(
+            " 5, 1, 4, 2, 3, 3, abc, 8, 7, 6, xyz, 10, 10 "
+        );
+
+        assertEquals("1-8, 10", summarizer.summarizeCollection(nums));
+    }
 }
