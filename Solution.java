@@ -5,9 +5,9 @@ import numberrangesummarizer.NumberRangeSummarizer;
 
 public class Solution implements NumberRangeSummarizer {
 
-    public ArrayList<Integer> collect(String input) {
+    public Collection<Integer> collect(String input) {
         String[] splitInput = input.split(",");
-        ArrayList<Integer> collected = new ArrayList<Integer>();
+        Collection<Integer> collected = new ArrayList<>();
 
         for (String str : splitInput) {
             try {
