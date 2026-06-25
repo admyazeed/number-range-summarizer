@@ -11,9 +11,9 @@ public class Solution implements NumberRangeSummarizer {
 
         for (String str : splitInput) {
             try {
-                collected.add(Integer.parseInt(str));
-            } catch (Exception e) {
-                System.out.println("Invalid string: " + str);
+                collected.add(Integer.parseInt(str.trim()));
+            } catch (NumberFormatException e) {
+                System.out.println("Error: Invalid string in input: " + str);
             }
         }
 
