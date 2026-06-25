@@ -24,8 +24,8 @@ public class Solution implements NumberRangeSummarizer {
         ArrayList<Integer> nums = new ArrayList<Integer>(input);
         String finalString = "";
 
-        if (nums.size() == 0) {
-            return "Error: Input is empty. Please ensure provided string contains only numbers separated by commas";
+        if ((input == null) | input.isEmpty()) {
+            return "";
         }
 
         //Initialize
